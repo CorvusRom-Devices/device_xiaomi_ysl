@@ -84,6 +84,22 @@ on post-fs-data
 mkdir /data/vendor/camera 0770 camera camera
 mkdir /data/misc/camera 0770 camera camera
 
+# KCal
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_cont
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_enable
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_hue
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_sat
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_val
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_min
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal
+    chmod 660 /sys/devices/platform/kcal_ctrl.0/kcal_cont
+    chmod 660 /sys/devices/platform/kcal_ctrl.0/kcal_enable
+    chmod 660 /sys/devices/platform/kcal_ctrl.0/kcal_hue
+    chmod 660 /sys/devices/platform/kcal_ctrl.0/kcal_sat
+    chmod 660 /sys/devices/platform/kcal_ctrl.0/kcal_val
+    chmod 660 /sys/devices/platform/kcal_ctrl.0/kcal_min
+    chmod 660 /sys/devices/platform/kcal_ctrl.0/kcal
+
 #start camera server as daemon
 service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     class late_start
