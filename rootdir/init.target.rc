@@ -99,6 +99,10 @@ mkdir /data/misc/camera 0770 camera camera
     chmod 660 /sys/devices/platform/kcal_ctrl.0/kcal_val
     chmod 660 /sys/devices/platform/kcal_ctrl.0/kcal_min
     chmod 660 /sys/devices/platform/kcal_ctrl.0/kcal
+    
+# XiaomiParts
+    chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
+    chmod 0660 /sys/devices/virtual/timed_output/vibrator/vtg_level
 
 #start camera server as daemon
 service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
