@@ -512,6 +512,7 @@
     <string-array name="config_deviceDisabledComponents" translatable="false">
         <item>com.google.android.gms/com.google.android.gms.nearby.messages.service.NearbyMessagesService</item>
     </string-array>
+        <item>com.google.android.googlequicksearchbox/com.google.android.hotword.service.HotwordService</item>
 
     <!-- Whether to allow sending active app broadcast -->
     <bool name="config_allowActivePackageBroadcast">true</bool>
