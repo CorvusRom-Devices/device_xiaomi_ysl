@@ -193,6 +193,13 @@ TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/fstab.qcom
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
 
+# Treble
+BOARD_VNDK_RUNTIME_DISABLE := true
+BOARD_VNDK_VERSION := current
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+PRODUCT_VENDOR_MOVE_ENABLED := true
+
 # We modify several neverallows, so let the build proceed
 ifneq ($(TARGET_BUILD_VARIANT),user)
 SELINUX_IGNORE_NEVERALLOWS := true
