@@ -198,7 +198,9 @@ sys.use_fifo_ui=1
 
 # Usb
 PRODUCT_PROPERTY_OVERRIDES += \
-persist.vendor.usb.config.extra=none
+persist.vendor.usb.config.extra=none \
+persist.sys.usb.config.extra=none \
+persist.sys.usb.diag_mdlog_enable=false
 
 # USB debugging
 PRODUCT_PROPERTY_OVERRIDES += \
