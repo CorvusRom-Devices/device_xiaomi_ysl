@@ -103,6 +103,10 @@ mkdir /data/misc/camera 0770 camera camera
 # XiaomiParts
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
     chmod 0660 /sys/devices/virtual/timed_output/vibrator/vtg_level
+    
+# Backlight dimmer
+    chown system system /sys/module/mdss_fb/parameters/backlight_dimmer
+    chmod 0660 /sys/module/mdss_fb/parameters/backlight_dimmer
 
 #start camera server as daemon
 service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
