@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceManager;
+import androidx.preference.SwitchPreference;
 
 import com.xiaomi.parts.kcal.KCalSettingsActivity;
 import com.xiaomi.parts.ambient.AmbientGesturePreferenceActivity;
@@ -21,15 +24,19 @@ import com.xiaomi.parts.R;
 public class DeviceSettings extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
-    public static final String PREF_VIBRATION_STRENGTH = "vibration_strength";
-    public static final String VIBRATION_STRENGTH_PATH = "/sys/devices/virtual/timed_output/vibrator/vtg_level";
-
     private static final String CATEGORY_DISPLAY = "display";
     private static final String PREF_DEVICE_KCAL = "device_kcal";
+
+    private static final String AMBIENT_DISPLAY = "ambient_display_gestures";
 
     private static final String PREF_ENABLE_DIRAC = "dirac_enabled";
     private static final String PREF_HEADSET = "dirac_headset_pref";
     private static final String PREF_PRESET = "dirac_preset_pref";
+
+    public static final String PREF_VIBRATION_STRENGTH = "vibration_strength";
+    public static final String VIBRATION_STRENGTH_PATH = "/sys/devices/virtual/timed_output/vibrator/vtg_level";
+
+    public static final String PREF_KEY_FPS_INFO = "fps_info";
 
     // value of vtg_min and vtg_max
     public static final int MIN_VIBRATION = 116;
@@ -48,11 +55,11 @@ public class DeviceSettings extends PreferenceFragment implements
     //private static final String TORCH_2_BRIGHTNESS_PATH = "/sys/devices/soc/800f000.qcom," +
     //        "spmi/spmi-0/spmi0-03/800f000.qcom,spmi:qcom,pm660l@3:qcom,leds@d300/leds/led:torch_1/max_brightness";
 
-    private Preference mAmbientPref;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.xiaomiparts_preferences, rootKey);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
 
         VibrationSeekBarPreference vibrationStrength = (VibrationSeekBarPreference) findPreference(PREF_VIBRATION_STRENGTH);
         vibrationStrength.setEnabled(FileUtils.fileWritable(VIBRATION_STRENGTH_PATH));
@@ -95,13 +102,14 @@ public class DeviceSettings extends PreferenceFragment implements
 
         PreferenceCategory displayCategory = (PreferenceCategory) findPreference(CATEGORY_DISPLAY);
 
-        if (FileUtils.fileWritable(BACKLIGHT_DIMMER_PATH)) {
-            SecureSettingSwitchPreference backlightDimmer = (SecureSettingSwitchPreference) findPreference(PREF_BACKLIGHT_DIMMER);
-            backlightDimmer.setChecked(FileUtils.getFileValueAsBoolean(BACKLIGHT_DIMMER_PATH, false));
-            backlightDimmer.setOnPreferenceChangeListener(this);
-        } else {
-            getPreferenceScreen().removePreference(findPreference(PREF_BACKLIGHT_DIMMER));
-        }
+        SecureSettingSwitchPreference backlightDimmer = (SecureSettingSwitchPreference) findPreference(PREF_BACKLIGHT_DIMMER);
+        backlightDimmer.setEnabled(BacklightDimmer.isSupported());
+        backlightDimmer.setChecked(BacklightDimmer.isCurrentlyEnabled(this.getContext()));
+        backlightDimmer.setOnPreferenceChangeListener(new BacklightDimmer(getContext()));
+
+        SwitchPreference fpsInfo = (SwitchPreference) findPreference(PREF_KEY_FPS_INFO);
+        fpsInfo.setChecked(prefs.getBoolean(PREF_KEY_FPS_INFO, false));
+        fpsInfo.setOnPreferenceChangeListener(this);
 
         Preference kcal = findPreference(PREF_DEVICE_KCAL);
         kcal.setOnPreferenceClickListener(preference -> {
@@ -110,14 +118,11 @@ public class DeviceSettings extends PreferenceFragment implements
             return true;
         });
 
-        mAmbientPref = findPreference("ambient_display_gestures");
-        mAmbientPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                Intent intent = new Intent(getContext(), AmbientGesturePreferenceActivity.class);
-                startActivity(intent);
-                return true;
-            }
+        Preference ambientDisplay = findPreference(AMBIENT_DISPLAY);
+        ambientDisplay.setOnPreferenceClickListener(preference -> {
+            Intent intent = new Intent(getContext(), AmbientGesturePreferenceActivity.class);
+            startActivity(intent);
+            return true;
         });
     }
 
@@ -169,9 +174,14 @@ public class DeviceSettings extends PreferenceFragment implements
                     DiracService.sDiracUtils.setLevel(String.valueOf(value));
                 }
                 break;
-
-            case PREF_BACKLIGHT_DIMMER:
-                FileUtils.setValue(BACKLIGHT_DIMMER_PATH, (boolean) value);
+            case PREF_KEY_FPS_INFO:
+                boolean enabled = (Boolean) value;
+                Intent fpsinfo = new Intent(this.getContext(), FPSInfoService.class);
+                if (enabled) {
+                    this.getContext().startService(fpsinfo);
+                } else {
+                    this.getContext().stopService(fpsinfo);
+                }
                 break;
 
             default:
