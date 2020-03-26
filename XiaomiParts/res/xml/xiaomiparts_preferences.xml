@@ -102,15 +102,15 @@
             app:units="%"/>
     </PreferenceCategory>
 
-    <!--PreferenceCategory
-        android:key="torch"
-        android:title="@string/torch_title">
-        <com.xiaomi.parts.preferences.CustomSeekBarPreference
-            android:defaultValue="100"
-            android:key="torch_brightness"
-            android:max="255"
-            app:min="1"
-            android:icon="@drawable/ic_torch"
-            android:title="@string/torch_brightness_title" />
-    </PreferenceCategory-->
+    <PreferenceCategory
+        android:key="usb_fastcharge"
+        android:title="USB Fastcharge" >
+
+        <com.xiaomi.parts.preferences.SecureSettingSwitchPreference
+            android:key="fastcharge"
+            android:defaultValue="true"
+            android:title="Enable USB Fastcharge"
+            android:icon="@drawable/ic_usb_fastcharge"
+            android:summary="Charge upto 900mA when connected to a computer via USB 3.0 port" />
+    </PreferenceCategory>    
 </PreferenceScreen>

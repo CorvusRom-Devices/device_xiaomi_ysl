@@ -48,7 +48,11 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final  String MICROPHONE_GAIN_PATH = "/sys/kernel/sound_control/mic_gain";
     public static final  String PREF_BACKLIGHT_DIMMER = "backlight_dimmer";
     public static final  String BACKLIGHT_DIMMER_PATH = "/sys/module/mdss_fb/parameters/backlight_dimmer";
+    public static final String CATEGORY_FASTCHARGE = "usb_fastcharge";
+    public static final String PREF_USB_FASTCHARGE = "fastcharge";
+    public static final String USB_FASTCHARGE_PATH = "/sys/kernel/fast_charge/force_fast_charge";
 
+    private SecureSettingSwitchPreference mFastcharge;
     //public static final String PREF_TORCH_BRIGHTNESS = "torch_brightness";
     //private static final String TORCH_1_BRIGHTNESS_PATH = "/sys/devices/soc/800f000.qcom," +
     //        "spmi/spmi-0/spmi0-03/800f000.qcom,spmi:qcom,pm660l@3:qcom,leds@d300/leds/led:torch_0/max_brightness";
@@ -99,6 +103,14 @@ public class DeviceSettings extends PreferenceFragment implements
 
         SecureSettingListPreference preset = (SecureSettingListPreference) findPreference(PREF_PRESET);
         preset.setOnPreferenceChangeListener(this);
+
+          if (FileUtils.fileWritable(USB_FASTCHARGE_PATH)) {
+        mFastcharge = (SecureSettingSwitchPreference) findPreference(PREF_USB_FASTCHARGE);
+        mFastcharge.setChecked(FileUtils.getFileValueAsBoolean(USB_FASTCHARGE_PATH, true));
+        mFastcharge.setOnPreferenceChangeListener(this);
+        } else {
+            getPreferenceScreen().removePreference(findPreference(CATEGORY_FASTCHARGE));
+        }
 
         PreferenceCategory displayCategory = (PreferenceCategory) findPreference(CATEGORY_DISPLAY);
 
