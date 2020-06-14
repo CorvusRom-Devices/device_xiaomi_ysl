@@ -1,3 +1,4 @@
+
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
 <!--Copyright (c) 2016, 2019 The Linux Foundation. All rights reserved.
 
@@ -1740,8 +1741,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
 
     <carrier_config mcc="405" mnc="54">
         <boolean name="carrier_volte_available_bool" value="true" />
-        <boolean name="carrier_vt_available_bool" value="true" />
-        <boolean name="carrier_wfc_ims_available_bool" value="true" />
     </carrier_config>
 
     <carrier_config mcc="405" mnc="55">
@@ -1798,6 +1797,21 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
     <carrier_config mcc="502" mnc="18">
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
+    </carrier_config>
+
+    <carrier_config mcc="405" mnc="850">
+	    <boolean name="carrier_volte_available_bool" value="true" />
+	    <boolean name="carrier_wfc_ims_available_bool" value="true" />
+    </carrier_config>
+
+    <carrier_config mcc="405" mnc="862">
+            <boolean name="carrier_volte_available_bool" value="true" />
+            <boolean name="carrier_wfc_ims_available_bool" value="true" />
+    </carrier_config>
+
+    <carrier_config mcc="432" mnc="35">
+            <boolean name="carrier_volte_available_bool" value="true" />
+            <boolean name="carrier_wfc_ims_available_bool" value="true" />
     </carrier_config>
 
     <carrier_config>
