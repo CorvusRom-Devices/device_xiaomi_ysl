@@ -146,14 +146,14 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_ysl
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78af000
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78af000 androidboot.usbconfigfs=true
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE :=  2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8953
-TARGET_KERNEL_CONFIG := Qwerty_ysl_defconfig
-TARGET_KERNEL_VERSION := 3.18
+TARGET_KERNEL_CONFIG := ysl_defconfig
+TARGET_KERNEL_VERSION := 4.9
 
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
@@ -178,7 +178,7 @@ TARGET_PER_MGR_ENABLED := true
 
 # Power
 TARGET_USES_INTERACTION_BOOST := true
-TARGET_TAP_TO_WAKE_NODE := "/dev/input/event2"
+TARGET_TAP_TO_WAKE_NODE := "/dev/input/event1"
 
 # SurfaceFlinger
 TARGET_USE_AOSP_SURFACEFLINGER := true
