@@ -8,4 +8,3 @@ hal_client_domain(hal_camera_default, hal_configstore)
 allow hal_camera_default sysfs:file { read };
 allow hal_camera_default sysfs:file { open };
 allow hal_camera_default sysfs:file { getattr };
-

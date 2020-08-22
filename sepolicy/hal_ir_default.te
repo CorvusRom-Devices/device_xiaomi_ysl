@@ -1,4 +1,1 @@
 allow hal_ir_default lirc_device:chr_file rw_file_perms;
-allow hal_ir_default device:chr_file { open read write };
-allow ueventd lirc_device:chr_file { create getattr };
-allow ueventd device:chr_file { create getattr };
