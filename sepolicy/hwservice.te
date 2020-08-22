@@ -1,0 +1,5 @@
+type nxpese_hwservice, hwservice_manager_type;
+type focaltech_hwservice, hwservice_manager_type;
+type hal_dms_hwservice, hwservice_manager_type;
+type hal_slmadapter_hwservice, hwservice_manager_type;
+

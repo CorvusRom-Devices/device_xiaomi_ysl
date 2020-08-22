@@ -1,7 +1,10 @@
-# Input devices
-r_dir_file(system_server, idc_file);
-r_dir_file(system_server, keylayout_file);
-# Vibrator
-allow system_server sysfs_vibrator:file read;
+allow system_server proc_touchpanel:dir search;
+allow system_server proc_touchpanel:file rw_file_perms;
+allow system_server keylayout_file:dir { search };
+#allow system_server keylayout_file:file { read };
+allow system_server sysfs:file { getattr };
+
 # Smart Charging
 allow system_server sysfs_battery_supply:file { getattr open read write };
+
+allow system_server default_android_hwservice:hwservice_manager find;

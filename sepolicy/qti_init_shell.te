@@ -3,3 +3,21 @@ typeattribute qti_init_shell data_between_core_and_vendor_violators;
 allow qti_init_shell proc_touchpanel:dir { r_dir_perms setattr };
 allow qti_init_shell proc_touchpanel:file { getattr setattr };
 allow qti_init_shell bluetooth_data_file:file r_file_perms;
+
+#XiaomiParts
+allow qti_init_shell kcal_dev:dir search;
+allow qti_init_shell kcal_dev:file rw_file_perms;
+allow qti_init_shell sysfs_backlightdim:dir search;
+allow qti_init_shell sysfs_backlightdim:file rw_file_perms;
+allow qti_init_shell sysfs_vibrator:dir search;
+allow qti_init_shell sysfs_vibrator:file rw_file_perms;
+allow qti_init_shell sysfs_fpsinfo:dir search;
+allow qti_init_shell sysfs_fpsinfo:file rw_file_perms;
+allow qti_init_shell fm_prop:property_service set;
+allow qti_init_shell vfat:dir { search };
+allow qti_init_shell vfat:dir { read };
+allow qti_init_shell vfat:file { getattr };
+allow qti_init_shell vfat:dir { open };
+allow qti_init_shell vfat:file { read };
+allow qti_init_shell vfat:file { open };
+allow qti_init_shell qti_init_shell:capability { kill };
