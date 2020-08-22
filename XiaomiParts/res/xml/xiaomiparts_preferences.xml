@@ -6,22 +6,6 @@
         android:key="audio"
         android:title="@string/audio_title">
 
-        <com.xiaomi.parts.preferences.CustomSeekBarPreference
-            android:defaultValue="2"
-            android:key="headphone_gain"
-            android:max="20"
-            app:min="-40"
-            android:icon="@drawable/ic_headphone"
-            android:title="@string/headphone_gain"/>
-
-        <com.xiaomi.parts.preferences.CustomSeekBarPreference
-            android:defaultValue="0"
-            android:key="microphone_gain"
-            android:max="20"
-            app:min="-10"
-            android:icon="@drawable/ic_mic"
-            android:title="@string/microphone_gain"/>
-
         <com.xiaomi.parts.preferences.SecureSettingSwitchPreference
             android:defaultValue="false"
             android:key="dirac_enabled"
@@ -51,6 +35,35 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="spectrum_profile"
+        android:title="@string/spectrum_profile_title">
+
+        <com.xiaomi.parts.preferences.SecureSettingListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/spectrum_dialogTitle"
+            android:entries="@array/spectrum_profiles"
+            android:entryValues="@array/spectrum_values"
+            android:key="spectrum"
+            android:summary="@string/spectrum_summary"
+            android:icon="@drawable/ic_spectrum" 
+            android:title="@string/spectrum_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="notification_led"
+        android:icon="@drawable/ic_led"
+        android:title="@string/notification_title">
+        <com.xiaomi.parts.preferences.NotificationLedSeekBarPreference
+            android:key="notification_led_brightness"
+            android:title="@string/notification_led_title"
+            android:max="100"
+            app:min="1"
+            app:units="%"
+            android:defaultValue="100" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="display"
         android:title="@string/display_title">
 
@@ -60,12 +73,6 @@
             android:title="@string/fps_info_title"
             android:summary="@string/fps_info_summary"
             android:persistent="true" />
-
-        <com.xiaomi.parts.preferences.SecureSettingSwitchPreference
-            android:key="backlight_dimmer"
-            android:icon="@drawable/ic_backlight"
-            android:title="@string/backlight_dimmer"
-            android:summary="@string/backlight_summary" />
 
         <Preference
             android:key="device_kcal"
@@ -101,8 +108,8 @@
             app:min="1"
             app:units="%"/>
     </PreferenceCategory>
-
-    <PreferenceCategory
+	
+	<PreferenceCategory
         android:key="usb_fastcharge"
         android:title="USB Fastcharge" >
 
@@ -112,5 +119,17 @@
             android:title="Enable USB Fastcharge"
             android:icon="@drawable/ic_usb_fastcharge"
             android:summary="Charge upto 900mA when connected to a computer via USB 3.0 port" />
-    </PreferenceCategory>    
+    </PreferenceCategory>
+
+    <!--PreferenceCategory
+        android:key="torch"
+        android:title="@string/torch_title">
+        <com.xiaomi.parts.preferences.CustomSeekBarPreference
+            android:defaultValue="100"
+            android:key="torch_brightness"
+            android:max="255"
+            app:min="1"
+            android:icon="@drawable/ic_torch"
+            android:title="@string/torch_brightness_title" />
+    </PreferenceCategory-->
 </PreferenceScreen>
