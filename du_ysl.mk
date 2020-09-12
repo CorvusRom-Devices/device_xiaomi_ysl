@@ -33,3 +33,7 @@ BOARD_VENDOR := Xiaomi
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_BOOT_ANIMATION_RES := 1080
 IS_PHONE := true
+
+# Maintainer
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.corvus.maintainer=Reynold29
