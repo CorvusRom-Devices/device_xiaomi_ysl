@@ -74,9 +74,6 @@ void vendor_load_properties() {
         LOG(ERROR) << __func__ << ": unexcepted region!";
     }
 
-    property_override("org.evolution.build_donate_url", "https://paypal.me/alex000jonathan");
-    property_override("org.evolution.build_maintainer", "Reynold Clare");
-    property_override("org.evolution.build_support_url", "https://t.me/EvolutionXYSL");
     property_override("ro.oem_unlock_supported", "0");
     property_override("ro.control_privapp_permissions", "log");
     property_override("ro.build.description", "tissot-user 9 PKQ1.180917.001 V10.0.14.0.PDHMIXM release-keys");
