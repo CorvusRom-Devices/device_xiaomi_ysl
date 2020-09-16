@@ -1,0 +1,20 @@
+[
+    {
+    "repository": "CorvusRom-Devices/device_xiaomi_ysl",
+    "target_path": "device/xiaomi/ysl",
+    "branch": "ten",
+    "remote": "github"
+  },
+  {
+    "repository":  "CorvusRom-Devices/vendor_xiaomi_ysl",
+    "target_path":  "vendor/xiaomi/ysl",
+    "branch":  "lineage-17.1",
+    "remote": "github"
+  },
+  {
+    "repository": "mahajant99/kernel_xiaomi_msm8953-ysl",
+    "target_path": "kernel/xiaomi/ysl",
+    "branch": "lineage-17.1",
+    "remote": "github"
+  },
+]
