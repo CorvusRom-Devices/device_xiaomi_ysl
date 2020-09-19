@@ -1,7 +1,7 @@
 [
   {
     "repository":  "CorvusRom-Devices/vendor_xiaomi_ysl",
-    "target_path":  "vendor/xiaomi/ysl",
+    "target_path":  "vendor/xiaomi",
     "branch":  "lineage-17.1",
     "remote": "github"
   },
