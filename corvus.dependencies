@@ -1,10 +1,4 @@
 [
-    {
-    "repository": "CorvusRom-Devices/device_xiaomi_ysl",
-    "target_path": "device/xiaomi/ysl",
-    "branch": "ten",
-    "remote": "github"
-  },
   {
     "repository":  "CorvusRom-Devices/vendor_xiaomi_ysl",
     "target_path":  "vendor/xiaomi/ysl",
