@@ -1,14 +1,27 @@
 [
-  {
-    "repository":  "CorvusRom-Devices/vendor_xiaomi_ysl",
-    "target_path":  "vendor/xiaomi",
-    "branch":  "11",
-    "remote": "github"
-  },
-  {
-    "repository": "stormbreaker-project/kernel_xiaomi_ysl",
-    "target_path": "kernel/xiaomi/ysl",
-    "branch": "main",
-    "remote": "github"
-  },
+   {
+      "repository":"CorvusRom-Devices/vendor_xiaomi_ysl",
+      "target_path":"vendor/xiaomi",
+      "branch":"11",
+      "remote":"github"
+   },
+   {
+      "repository":"stormbreaker-project/kernel_xiaomi_ysl",
+      "target_path":"kernel/xiaomi/ysl",
+      "branch":"main",
+      "remote":"github"
+   }
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
